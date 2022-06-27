@@ -1,4 +1,0 @@
-1.ctrl + shift + .                  navigate through components in file
-2. ctrl + d                         select multiple elements
-3. alt + up / down arrow            move line up or down     (+shift     to add line up or down)
-4. ctrl + k                         clear terminal
