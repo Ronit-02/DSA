@@ -9,25 +9,25 @@ public:
     // const int D = 1000;
     int t[1000][1000];
 
-int LCS(string x, string y, int m, int n){
+    int LCS(string x, string y, int m, int n){
 
-    //base codition
-    if(m==0 || n==0)
-        return 0;       // lenghth of common subsequence which is empty set is 0
+        //base codition
+        if(m==0 || n==0)
+            return 0;       // lenghth of common subsequence which is empty set is 0
 
-    if(t[m][n] != -1)
-        return t[m][n];
+        if(t[m][n] != -1)
+            return t[m][n];
 
-    //conditions using the choice diagram
-    if(x[m-1] == y[n-1]){
-        return t[m][n] =  1 + LCS(x, y, m-1, n-1);
+        //conditions using the choice diagram
+        if(x[m-1] == y[n-1]){
+            return t[m][n] =  1 + LCS(x, y, m-1, n-1);
+        }
+
+        else{
+            return t[m][n] =  max( LCS(x, y, m-1, n) , LCS(x, y, m, n-1) );
+        }
+
     }
-
-    else{
-        return t[m][n] =  max( LCS(x, y, m-1, n) , LCS(x, y, m, n-1) );
-    }
-
-}
     
     int minDistance(string word1, string word2) {
         
@@ -58,6 +58,6 @@ int main(){
     Solution s;
     int output = s.minDistance(x, y);
     cout<<output;
-     
+
     return 0;
 }
