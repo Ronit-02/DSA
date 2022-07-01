@@ -48,7 +48,7 @@ void insertAtTail(Node* &head, Node* &tail, int d){
 }
 
 // its returning head of reversed list
-Node* reverse(Node* &head){
+Node* reverse(Node* head){
     
     // base case
     if(head == NULL || head->next == NULL)
