@@ -13,7 +13,6 @@ void multiply(int F[2][2], int M[2][2]){
     F[0][1] = b;
     F[1][0] = c;
     F[1][1] = d;
-
 }
 
 void power(int F[2][2], int n){
