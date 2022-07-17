@@ -21,22 +21,18 @@ public:
 node* buildTree(node* root){
 
     int data;
-    // cout << "Enter the data: " << endl;
     cin >> data;
 
-    // null case
+    // base case
     if(data == -1)
         return NULL;
 
-    // root node
     root = new node(data);
 
-    // left node
-    // cout << "Enter data for inserting in left of " << data << endl;
+    // left root node
     root -> left = buildTree(root -> left);
 
-    // right node
-    // cout << "Enter data for inserting in right of " << data << endl;
+    // right root node
     root -> right = buildTree(root -> right);
 
     return root;

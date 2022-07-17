@@ -130,7 +130,6 @@ public:
         leftTrav(root->left, ans);
         
         // all the leaf nodes
-        
         // left subtree
         inorderTrav(root->left, ans);
         // right subtree
