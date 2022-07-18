@@ -1,5 +1,7 @@
 #include<iostream>
 #include<stack>
+#include<queue>
+#include<vector>
 
 using namespace std;
 
@@ -16,24 +18,39 @@ public:
     }
 };
 
-node* buildTree(node* root){
+// Using level order traversal as i/p
+void buildTree(node* &root){
+
+    queue<node *> q;
 
     int data;
     cin >> data;
-
-    // base case
-    if(data == -1)
-        return NULL;
-
     root = new node(data);
+    q.push(root);
 
-    // left root node
-    root -> left = buildTree(root -> left);
+    while(!q.empty()){
 
-    // right root node
-    root -> right = buildTree(root -> right);
+        node* temp = q.front();
+        q.pop();
 
-    return root;
+        // root -> left data
+        int leftData;
+        cin >> leftData;
+
+        if(leftData != -1){
+            temp -> left = new node(leftData);
+            q.push(temp -> left); 
+        }
+
+        // root -> right data
+        int rightData;
+        cin >> rightData;
+
+        if(rightData != -1){
+            temp -> right = new node(rightData);
+            q.push(temp -> right); 
+        }
+    }
 }
 
 // Recursive method
@@ -50,11 +67,12 @@ void postorderTraversal(node* root){
 }
 
 // Iterative method using 2 Stacks
-void postorderTrav(node* root){
+vector<int> postorderTrav(node* root){
+
+    vector<int> post;
 
     stack<node *> s1;
     stack<node *> s2;
-
     s1.push(root);
 
     while(!s1.empty()){
@@ -73,21 +91,25 @@ void postorderTrav(node* root){
         }
     }
 
-    // print contents of second stack 
+    // contents of 2nd stack 
     while(!s2.empty()){
         node *temp = s2.top();
-        cout << temp -> data << " ";
+        post.push_back(temp -> data);
         s2.pop();
     }       
+    return post;
 }
 
 int main(){
 
     node* root = NULL;
-    root = buildTree(root);
-    // 1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1
+    buildTree(root);
+    // 1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
 
-    postorderTrav(root);
+    cout << "Postorder traversal: " << endl;
+    vector<int> post = postorderTrav(root);
+    for(auto i : post)
+        cout << i << " ";
 
     return 0;
 }

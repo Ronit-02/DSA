@@ -1,5 +1,7 @@
 #include<iostream>
+#include<queue>
 #include<stack>
+#include<vector>
 
 using namespace std;
 
@@ -18,24 +20,39 @@ public:
     }
 };
 
-node* buildTree(node* root){
+// Using level order traversal as i/p
+void buildTree(node* &root){
+
+    queue<node *> q;
 
     int data;
     cin >> data;
-
-    // base case
-    if(data == -1)
-        return NULL;
-
     root = new node(data);
+    q.push(root);
 
-    // left root node
-    root -> left = buildTree(root -> left);
+    while(!q.empty()){
 
-    // right root node
-    root -> right = buildTree(root -> right);
+        node* temp = q.front();
+        q.pop();
 
-    return root;
+        // root -> left data
+        int leftData;
+        cin >> leftData;
+
+        if(leftData != -1){
+            temp -> left = new node(leftData);
+            q.push(temp -> left); 
+        }
+
+        // root -> right data
+        int rightData;
+        cin >> rightData;
+
+        if(rightData != -1){
+            temp -> right = new node(rightData);
+            q.push(temp -> right); 
+        }
+    }
 }
 
 // Recursive Method
@@ -51,39 +68,44 @@ void preorderTraversal(node* root){
     preorderTraversal(root -> right);
 }
 
-// Iterative method using Stack
-void preorderTrav(node* root){
+// Iterative method using 1 Stack
+vector<int> preorderTrav(node* root){
 
-    stack<node *> s;
+    vector<int> pre;
 
-    // push root in stack
+    stack<node*> s;
     s.push(root);
 
     while(!s.empty()){
 
-        // pop root, print it
-        node *temp = s.top();
+        // root value
+        node *curr = s.top();
         s.pop();
-        cout << temp -> data << " ";
+        
+        // add
+        pre.push_back(curr -> data);
 
-        // push root->right and root->left
-        if(temp -> right){
-            s.push(temp -> right);
+        // push right and left
+        if(curr -> right){
+            s.push(curr -> right);
         }
-        if(temp -> left){
-            s.push(temp -> left);
+        if(curr -> left){
+            s.push(curr -> left);
         }
     }
+    return pre;
 }
 
 int main(){
 
     node* root = NULL;
-    root = buildTree(root);
-    // 1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1
+    buildTree(root);
+    // 1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
 
     cout << "Preorder traversal: " << endl;
-    preorderTrav(root);
+    vector<int> pre = preorderTrav(root);
+    for(auto i : pre)
+        cout << i << " ";
 
     return 0;
 }

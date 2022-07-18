@@ -1,5 +1,7 @@
 #include<iostream>
 #include<stack>
+#include<queue>
+#include<vector>
 
 using namespace std;
 
@@ -16,24 +18,39 @@ public:
     }
 };
 
-node* buildTree(node* root){
+// Using level order traversal as i/p
+void buildTree(node* &root){
+
+    queue<node*> q;
 
     int data;
     cin >> data;
-
-    // base case
-    if(data == -1)
-        return NULL;
-
     root = new node(data);
+    q.push(root);
 
-    // left root node
-    root -> left = buildTree(root -> left);
+    while(!q.empty()){
 
-    // right root node
-    root -> right = buildTree(root -> right);
+        node* temp = q.front();
+        q.pop();
 
-    return root;
+        // root -> left data
+        int leftData;
+        cin >> leftData;
+
+        if(leftData != -1){
+            temp -> left = new node(leftData);
+            q.push(temp -> left); 
+        }
+
+        // root -> right data
+        int rightData;
+        cin >> rightData;
+
+        if(rightData != -1){
+            temp -> right = new node(rightData);
+            q.push(temp -> right); 
+        }
+    }
 }
 
 // Recursive method
@@ -49,16 +66,17 @@ void inorderTraversal(node* root){
     inorderTraversal(root -> right);
 }
 
-// Iterative method using Stack
-void inorderTrav(node* root){
+// Iterative method using 1 Stack
+vector<int> inorderTrav(node* root){
 
-    // empty stack
+    vector<int> in;
+    
     stack<node *> s;
     node* curr = root;
 
     while(curr != NULL || !s.empty()){
 
-        // push items of root->left till 'NULL'
+        // go to left till 'NULL'
         while(curr != NULL){
             s.push(curr);
             curr = curr -> left;
@@ -67,21 +85,25 @@ void inorderTrav(node* root){
         // pop item
         curr = s.top();
         s.pop();
-        
-        cout << curr -> data << " ";
+        in.push_back(curr -> data);
 
-        // pop_item -> right
+        // go to right of pop_item
         curr = curr -> right;
     }
+
+    return in;
 }
 
 int main(){
 
     node* root = NULL;
-    root = buildTree(root);
-    // 1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1
+    buildTree(root);
+    // 1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
 
-    inorderTrav(root);
+    cout << "Inorder Traversal: " << endl;
+    vector<int> in = inorderTrav(root);
+    for(auto i : in)
+        cout << i << " ";
 
     return 0;
 }
