@@ -67,6 +67,7 @@ void inorderTraversal(node* root){
 }
 
 // Iterative method using 1 Stack
+// Method: go left till NULL, pop, go right
 vector<int> inorderTrav(node* root){
 
     vector<int> in;

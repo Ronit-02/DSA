@@ -67,6 +67,7 @@ void postorderTraversal(node* root){
 }
 
 // Iterative method using 2 Stacks
+// Method: pop, push to second, push left and right
 vector<int> postorderTrav(node* root){
 
     vector<int> post;

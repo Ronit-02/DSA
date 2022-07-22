@@ -69,6 +69,7 @@ void preorderTraversal(node* root){
 }
 
 // Iterative method using 1 Stack
+// Method: pop, add left and right
 vector<int> preorderTrav(node* root){
 
     vector<int> pre;
