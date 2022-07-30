@@ -54,6 +54,7 @@ void inorder(node *root, vector<int> &in){
     inorder(root -> right, in);
 }
 
+// SC: O(N)
 // Intuition: calculating inorder(ascending) and creating linked list with it
 node *flatten(node *root){
 
@@ -71,6 +72,36 @@ node *flatten(node *root){
     }
 
     return newRoot;
+}
+
+// SC: O(1)
+// Intuition: Morris Traversal approach
+void convertBST(node* &root){
+        
+    // left subtree jab tk -> left null, left rightmost point root, root = curr
+    node *curr = root;
+    node *prev = NULL;
+    node *temp = NULL;
+    
+    while(curr != NULL){
+        
+        // if left subtree exists
+        if(curr -> left){
+            
+            prev = curr -> left;
+            temp = prev;
+            
+            while(prev -> right)
+                prev = prev -> right;
+            
+            prev -> right = curr;
+            curr -> left = NULL;
+            curr = temp;
+            root = curr;
+        }
+        else
+            curr = curr -> right;
+    }
 }
 
 // Iterative Approach
@@ -105,12 +136,13 @@ int main(){
 
     cout << "Enter data to create BST: " << endl;
     takeInput(root);
-    // 10 5 21 3 7 11 25 -1
+    // 2 3 6 2 4 -1
 
-    node *newRoot = flatten(root);
+    // node *newRoot = flatten(root);
+    convertBST(root);
 
     cout << "Printing: " << endl;
-    levelOrderTraversal(newRoot);
+    levelOrderTraversal(root);
 
     return 0;
 }
