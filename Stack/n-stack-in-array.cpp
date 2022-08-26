@@ -9,7 +9,7 @@ public:
     int n, m, freespot;
 
     int *arr;    // to store elements
-    int *top;    // indicates what is present currently at where
+    int *top;    // indicates top element
     int *next;   // indicates next element present, next freespot available
 
     NStack(int n, int m){
@@ -45,11 +45,11 @@ public:
         // calculating index
         int index = freespot;
 
-        // update freespot
-        freespot = next[index];
-
         // insert element into array
         arr[index] = x;
+
+        // update freespot
+        freespot = next[index];
 
         // update next
         next[index] = top[m-1];
@@ -67,11 +67,11 @@ public:
 
         int index = top[m-1];
 
+        arr[index] = 0;
+     
         top[m-1] = next[index];
 
         next[index] = freespot;
-
-        arr[index] = 0;
 
         freespot = index;
     }
@@ -88,13 +88,13 @@ int main(){
 
     NStack s(6, 3);
 
-    s.push(1, 1);
-    s.push(2, 1);
+    s.push(1, 1);   // push in 1st stack
+    s.push(2, 1);   // push in 2nd stack
 
     s.push(3, 2);
     s.push(2, 2);
 
-    s.pop(2);
+    s.pop(2);      // pop from 2nd stack
 
     s.print();
 

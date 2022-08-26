@@ -2,24 +2,23 @@
 
 using namespace std;
 
-//Euclid'sAlgorithm
+//Euclid'sAlgorithm (Long Divisions)
 int gcd(int a, int  b){
 
-    // base cases
-    if(a==0)
-        return b;
-    if(b==0)
+    if(b == 0)
         return a;
-    
-    if(a >= b)
-        gcd(a-b, b);
-    else
-        gcd(a,b-a);
+    return gcd(b, a%b);
 }
 
 int main(){
 
-    cout<< gcd(24,48);
+    cout << "GCD: " << gcd(24,48) << endl;
+    // 24 = 2^3 * 3^1
+    // 48 = 2^4 * 3^1
+    // gcd = 2^3 * 3^1 = 24 
+
+    cout << "LCM: " << 24*48 / gcd(24,48);
+    // lcm = a*b / gcd
 
     return 0;
 }
