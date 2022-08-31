@@ -1,22 +1,31 @@
-#include<iostream>
+#include <iostream>
 #include <vector>
 
 using namespace std;
 
 // Space Complexity: O(n*n)
+// Time Complexity: O(n)
 int main(){
 
     int n;  // no of nodes
-    int m;  // no of edges
-    cin >> n >> m;  
+    int e;  // no of edges
+    cin >> n >> e;  
 
-    // Through vector (normal fill or resize or push_back)
-    vector<vector<int>> a(n, vector<int>(m, 0));
-    
-    // Through pointers
-    int **adj = new int*[n];
-    for(int i=0; i<n; i++){
-        adj[i] = new int[m];
+    // 2d array of [n+1]*[e+1], as we are taking 1-based indexing
+    // using pointer
+    int **a = new int*[n+1];
+    for(int i=1; i<=n; i++){
+        a[i] = new int[e+1];
+    }
+    // using vector
+    vector<vector<int>> adj(n+1, vector<int>(e+1, 0));
+
+    // for all the edges...
+    for(int i=0; i<e ;i++){
+        int u, v;
+        cin >> u >> v;
+        adj[u][v] = 1;
+        adj[v][u] = 1;
     }
 
     return 0;
