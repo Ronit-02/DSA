@@ -9,7 +9,7 @@ int partition(int arr[], int s, int e){
     int i = s;  // tracking smaller numbers
     int j = s;  // tracking array elements
     
-    // all the elements smaller than pivot and pivot itself are before i
+    // bring all the elements smaller than or equal to pivot before i
     while(j <= e){
 
         if(arr[j] <= pivot){

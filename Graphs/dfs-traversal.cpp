@@ -10,9 +10,9 @@ void dfs(vector<int> &vis, vector<int> &trav, vector<int> adj[], int node){
     vis[node] = 1;
     trav.push_back(node);
 
-    for(auto it: adj[node]){
-
-        if(vis[it] != 1) dfs(vis, trav, adj, it);
+    for(auto adjNode: adj[node]){
+        if(vis[adjNode] != 1) 
+            dfs(vis, trav, adj, adjNode);
     }
 }
 

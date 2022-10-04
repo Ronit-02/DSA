@@ -5,7 +5,7 @@
 using namespace std;
 
 // Time Complexity: O(n) + O(2e)
-vector<int> BFS(int n, int e, vector<int> adj[]){
+vector<int> bfs(int n, int e, vector<int> adj[]){
 
     vector<int> vis(n, 0);  // visited array
     vis[0] = 1;
@@ -19,10 +19,10 @@ vector<int> BFS(int n, int e, vector<int> adj[]){
         int node = q.front();
         q.pop();
 
-        for(auto it: adj[node]){
-            if(vis[it] == 0){
-                vis[it] = 1;
-                q.push(it);
+        for(auto adjNode: adj[node]){
+            if(vis[adjNode] == 0){
+                vis[adjNode] = 1;
+                q.push(adjNode);
             }
         }
 
@@ -45,7 +45,7 @@ int main(){
         adj[v].push_back(u);
     }
 
-    vector<int> trav = BFS(n, e, adj);
+    vector<int> trav = bfs(n, e, adj);
 
     for(auto x: trav){
         cout << x << " ";

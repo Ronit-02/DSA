@@ -3,8 +3,8 @@
 
 using namespace std;
 
-// Time Complexity: 
-// Space Complexity: O(2E)
+// Time Complexity: O(e)
+// Space Complexity: O(2e)
 int main(){
 
     int n;   // nodes 
