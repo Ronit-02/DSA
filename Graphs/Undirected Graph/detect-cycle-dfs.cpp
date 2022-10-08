@@ -11,11 +11,11 @@ bool dfs(vector<int> &vis, vector<int> adj[], int node, int parent){
     vis[node] = 1;  // mark it
 
     // traversing all adjacent items
-    for(auto adjNode:  adj[node]){
+    for(auto adjNode: adj[node]){
 
         // 1. not visited, visit it
         if(vis[adjNode] == 0){
-            if(dfs(vis, adj, adjNode, node) == true)
+            if(dfs(vis, adj, adjNode, node) == true)  // if detected a cycle, break out
                 return true;
         }
 

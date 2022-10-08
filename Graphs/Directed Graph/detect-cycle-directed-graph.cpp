@@ -5,22 +5,22 @@ using namespace std;
 
 // Intuition: 
 // we start from somewhere and if we reach a node that is previously visited
-// but not path visited (no parent as it can't point back)
+// and path visited as well, then it's a cycle
 bool dfs(vector<int> &vis, vector<int> &path, vector<int> adj[], int node){
 
     vis[node] = 1;  // mark it
     path[node] = 1;
 
     // traversing all adjacent items
-    for(auto adjNode:  adj[node]){
+    for(auto adjNode: adj[node]){
 
         // 1. not visited, visit it
         if(vis[adjNode] == 0){
-            if(dfs(vis, path, adj, adjNode) == true)
+            if(dfs(vis, path, adj, adjNode) == true)    // if detected a cycle, break out
                 return true;
         }
 
-        // 2. visited but in path
+        // 2. visited but in same path
         else if(path[adjNode] == 1){
             return true;
         }
