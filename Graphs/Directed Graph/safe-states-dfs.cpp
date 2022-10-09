@@ -34,7 +34,7 @@ vector<int> safeStates(int n, vector<int> adj[]){
     vector<int> vis(n, 0); // visited array
     vector<int> path(n, 0);  // path-visited array
 
-    // for multi-component graph, need to check every node
+    // need to check every node if it leads to a cycle or not
     for(int i=0; i<n; i++){
         if(!vis[i])
             dfs(vis, path, adj, i);

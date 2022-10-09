@@ -8,7 +8,6 @@ using namespace std;
 vector<int> bfs(int n, vector<int> adj[]){
 
     vector<int> bfs;
-
     vector<int> vis(n, 0);  // visited array
     vis[0] = 1;
 
