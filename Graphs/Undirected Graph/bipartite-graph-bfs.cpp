@@ -36,7 +36,7 @@ bool bfs(vector<int> &color, vector<int> adj[], int src){
 
 // TC: O(n + 2e)
 // SC: O(n)
-bool isBipartite(int n, int e, vector<int> adj[]){
+bool isBipartite(int n, vector<int> adj[]){
 
     vector<int> color(n, -1); // color array
 
@@ -63,6 +63,6 @@ int main(){
         adj[v].push_back(u);
     }
 
-    cout << isBipartite(n, e, adj);
+    cout << isBipartite(n, adj);
     return 0;
 }

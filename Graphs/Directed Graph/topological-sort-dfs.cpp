@@ -4,8 +4,9 @@
 
 using namespace std;
 
-// Intuition:
-// 
+// Intuition: (Directed Acyclic Graph)
+// Process a node after all of its children are processed. 
+// Each time a node is processed, it is pushed onto a stack
 void dfs(vector<int> &vis, stack<int> &st, vector<int> adj[], int node){
 
     vis[node] = 1;  // mark it
@@ -19,7 +20,7 @@ void dfs(vector<int> &vis, stack<int> &st, vector<int> adj[], int node){
     st.push(node);
 }
 
-vector<int> topoSort(int n, int e, vector<int> adj[]){
+vector<int> topoSort(int n, vector<int> adj[]){
 
     vector<int> vis(n, 0); // visited array
     stack<int> st;
@@ -53,7 +54,7 @@ int main(){
     }
 
     vector<int> topo;
-    topo = topoSort(n, e, adj);
+    topo = topoSort(n, adj);
     for(auto x: topo)
         cout << x << " ";
 

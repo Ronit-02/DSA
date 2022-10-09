@@ -20,7 +20,7 @@ void dfs(vector<int> &vis, vector<int> &trav, vector<int> adj[], int node){
 
 // Time complexity: O(n) + O(2e)
 // Space complexity: O(n)
-vector<int> DFS(int n, int e, vector<int> adj[]){
+vector<int> DFS(int n, vector<int> adj[]){
 
     vector<int> vis(n, 0);
     vector<int> trav;  // store trav
@@ -45,7 +45,7 @@ int main(){
     }
 
     // DFS Traversal
-    vector<int> trav = DFS(n, e, adj);
+    vector<int> trav = DFS(n, adj);
     for(auto x: trav){
         cout << x << " ";
     }

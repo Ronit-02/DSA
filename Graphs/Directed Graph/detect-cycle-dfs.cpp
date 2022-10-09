@@ -29,7 +29,7 @@ bool dfs(vector<int> &vis, vector<int> &path, vector<int> adj[], int node){
     return false;
 }
 
-bool isCycle(int n, int e, vector<int> adj[]){
+bool isCycle(int n, vector<int> adj[]){
 
     vector<int> vis(n, 0); // visited array
     vector<int> path(n, 0);  // path-visited array
@@ -57,7 +57,7 @@ int main(){
     }
 
     // check if cycle
-    cout << isCycle(n, e, adj);
+    cout << isCycle(n, adj);
 
     return 0;
 }

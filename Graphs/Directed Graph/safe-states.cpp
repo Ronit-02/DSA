@@ -29,7 +29,7 @@ bool dfs(vector<int> &vis, vector<int> &path, vector<int> adj[], int node){
     return false;
 }
 
-vector<int> safeStates(int n, int e, vector<int> adj[]){
+vector<int> safeStates(int n, vector<int> adj[]){
 
     vector<int> vis(n, 0); // visited array
     vector<int> path(n, 0);  // path-visited array
@@ -64,7 +64,7 @@ int main(){
     }
 
     vector<int> safe;
-    safe = safeStates(n, e, adj);
+    safe = safeStates(n, adj);
     for(auto x: safe)
         cout << x << " ";
 

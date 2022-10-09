@@ -36,7 +36,7 @@ bool bfs(vector<int> &vis, vector<int> adj[], int src){
 
 // TC: O(n + 2e)
 // SC: O(n)
-bool isCycle(int n, int e, vector<int> adj[]){
+bool isCycle(int n, vector<int> adj[]){
 
     vector<int> vis(n, 0); // visited array
 
@@ -64,6 +64,6 @@ int main(){
     }
 
     // for multisource
-    cout << isCycle(n, e, adj);
+    cout << isCycle(n, adj);
     return 0;
 }

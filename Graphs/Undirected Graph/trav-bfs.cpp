@@ -5,7 +5,7 @@
 using namespace std;
 
 // Time Complexity: O(n) + O(2e)
-vector<int> bfs(int n, int e, vector<int> adj[]){
+vector<int> bfs(int n, vector<int> adj[]){
 
     vector<int> bfs;
 
@@ -50,7 +50,7 @@ int main(){
     }
 
     // BFS Traversal
-    vector<int> trav = bfs(n, e, adj);
+    vector<int> trav = bfs(n, adj);
     for(auto x: trav){
         cout << x << " ";
     }
