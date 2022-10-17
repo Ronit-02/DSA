@@ -23,7 +23,6 @@ int main(){
     string arr[10] = {"zero","one","two","three","four","five","six","seven","eight","nine"};
     
     sayDigits(929, arr);
-    // cout << output << endl;
 
     return 0;
 }
