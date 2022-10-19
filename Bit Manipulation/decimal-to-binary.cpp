@@ -4,8 +4,10 @@
 
 using namespace std;
 
-//decimal to binary
-//1 = 0001
+// decimal to binary
+// 1 = 0001
+// right shift: 0001 >> 1 = 0000
+// left shift:  0001 << 1 = 0010
 
 int main(){
 
