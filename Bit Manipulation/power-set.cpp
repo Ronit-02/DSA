@@ -4,10 +4,14 @@
 
 using namespace std;
 
-// TC: O(2^n * n)
+// Ques:
+// Find all the subsequences of a string
+
 // Intuition: 
 // going through all the numbers (0 -> 2^n-1), 
 // only set bit index(1) is taken into sub-string
+
+// TC: O(2^n * n)
 vector<string> subsequences(string str){
 
 	int n = str.length();
@@ -16,13 +20,14 @@ vector<string> subsequences(string str){
 	for (int num=0; num<(1 << n); num++) {
 		string substr = "";
 
+		// check for set bits and make substr from it
 		for (int i=0; i<n; i++) {
-
-			// check if the ith bit is set or not
 			if (num & (1 << i)) {
 				substr += str[i];
 			}
 		}
+
+		// add substring
 		if (substr.length() > 0) {
 			ans.push_back(substr);
 		}

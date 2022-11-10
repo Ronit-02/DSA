@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -27,6 +28,8 @@ vector<vector<int>> subsetsWithDup(vector<int> nums){
     vector<vector<int>> ans;
     vector<int> curr;
 
+    // sort before sending to take care of scattered duplicates
+    sort(nums.begin(), nums.end());
     helper(nums, 0, curr, ans);    
     return ans;
 }

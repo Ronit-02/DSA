@@ -9,12 +9,11 @@ void insertAtBottom(stack<int> &s, int x){
         s.push(x);
         return;
     }
+    
     int num = s.top();
-    // removing
+
     s.pop();
-    // recursive call
     insertAtBottom(s, x);
-    // adding
     s.push(num);
 }
 

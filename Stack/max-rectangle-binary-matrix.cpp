@@ -4,6 +4,8 @@
 
 using namespace std;
 
+// Intuition:
+// 
 void nextSmaller(vector<int> arr, vector<int> &next, int n){
     
     stack<int> s;
@@ -58,6 +60,7 @@ int calculateMaxArea(vector<int> row){
     }
     return ans;
 }
+
 int maximalRectangle(vector<vector<int>>& matrix) {
     
     int ans = 0;
