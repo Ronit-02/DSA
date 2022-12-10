@@ -5,48 +5,47 @@
 using namespace std;
 
 // Recursive Approach
-void dfs(vector<int> &vis, vector<int> &trav, vector<int> adj[], int node){
+// Time complexity: O(n) + O(2e)
+// Space complexity: O(n)
+void dfs(vector<int> adj[], vector<int> &vis, int node, vector<int> &seq){
 
     // 1. mark and add it
     vis[node] = 1;
-    trav.push_back(node);
+    seq.push_back(node);
 
     // 2. visit adjacent nodes
     for(auto adjNode: adj[node]){
-        if(vis[adjNode] != 1) 
-            dfs(vis, trav, adj, adjNode);
+        if(!vis[adjNode]) 
+            dfs(adj, vis, adjNode, seq);
     }
-}
-
-// Time complexity: O(n) + O(2e)
-// Space complexity: O(n)
-vector<int> DFS(int n, vector<int> adj[]){
-
-    vector<int> vis(n, 0);
-    vector<int> trav;  // store trav
-
-    int start = 0;    // starting node
-    dfs(vis, trav, adj, start);
-    return trav;
 }
 
 int main(){
 
+    // assumption: Graph(1 - n)
     int n, e;    
     cin >> n >> e;
     
-    // Initialize list
+    // initialize list
     vector<int> adj[100];
-    for(int i=0; i<e; i++){
+    for(int i=1; i<=e; i++){
         int u, v;
         cin >> u >> v;
         adj[u].push_back(v);
-        adj[v].push_back(u);
     }
 
-    // DFS Traversal
-    vector<int> trav = DFS(n, adj);
-    for(auto x: trav){
+    // visited array
+    vector<int> vis(n+1, 0);
+    vector<int> seq;
+
+    // for disconnected graph, consider all nodes
+    for(int node=1; node <= n; node++){
+        if(!vis[node]) 
+            dfs(adj, vis, node, seq);
+    }   
+
+    // dfs sequence
+    for(auto x: seq){
         cout << x << " ";
     }
 

@@ -6,7 +6,9 @@ using namespace std;
 // Intuition:
 // Add element, recursively call for next index
 // remove and backtrack after exploring depth
+
 // TC: O(2^n * n)
+
 void subsets(vector<int> nums, int index, vector<vector<int>> &ans, vector<int> curr){
 
     ans.push_back(curr);
@@ -15,7 +17,7 @@ void subsets(vector<int> nums, int index, vector<vector<int>> &ans, vector<int> 
         // add
         curr.push_back(nums[i]);
         // recur
-        subsets(nums, index+1, ans, curr);
+        subsets(nums, i+1, ans, curr);
         // remove
         curr.pop_back();
     }
@@ -26,7 +28,14 @@ int main(){
     vector<int> nums = {1,2,3};
     vector<vector<int>> ans;
     vector<int> curr;
+
     subsets(nums, 0, ans, curr);
+
+    for(int i=0; i<ans.size(); i++){
+        for(auto x:ans[i])
+            cout << x;
+        cout << endl;
+    }
 
     return 0;
 }

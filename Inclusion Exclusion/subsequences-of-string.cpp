@@ -3,7 +3,11 @@
 
 using namespace std;
 
+// Intuition:
+// use inclusion exclusion principle
+
 // TC: O(2^n)
+
 void recurSubseq(string str, int index, string substr, vector<string> &ans){
     
     // base case

@@ -5,8 +5,8 @@
 using namespace std;
 
 // Intuition: (Directed Acyclic Graph)
-// Process a node after all of its children are processed. 
-// Each time a node is processed, it is pushed onto a stack
+// Push a parent node into the stack after all its
+// children nodes are pushed
 void dfs(vector<int> &vis, stack<int> &st, vector<int> adj[], int node){
 
     vis[node] = 1;  // mark it

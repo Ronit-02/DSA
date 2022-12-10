@@ -38,7 +38,7 @@ Ternary operator: ?:
     eg. 1100 -> 1000
         1011 -> 1010
 
-8. Getting the lowest set bit
+8. Getting the lowest set bit (rsbm)
     int res = x & (-x)
     eg. 1100 -> 0100
 
