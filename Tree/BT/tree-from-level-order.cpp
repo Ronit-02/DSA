@@ -9,16 +9,13 @@ public:
     node* left;
     node* right;
 
-    // constructor
-    node(int data){
-        
+    node(int data){        
         this->data = data;
         left = NULL;
         right = NULL;
     }
 };
 
-// Using level order traversal as i/p
 void buildTree(node* &root){
 
     // using queue to store left and right nodes
@@ -34,19 +31,17 @@ void buildTree(node* &root){
         node* temp = q.front();
         q.pop();
 
-        // root -> left data
+        // left node
         int leftData;
         cin >> leftData;
-
         if(leftData != -1){
             temp -> left = new node(leftData);
             q.push(temp -> left); 
         }
 
-        // root -> right data
+        // right node
         int rightData;
         cin >> rightData;
-
         if(rightData != -1){
             temp -> right = new node(rightData);
             q.push(temp -> right); 
@@ -70,8 +65,8 @@ int main(){
 
     node* root = NULL;
 
+    // use this order: 1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
     buildTree(root);
-    // 1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
 
     cout << "Printing Preorder Traversal: " << endl;
     preorderTraversal(root);

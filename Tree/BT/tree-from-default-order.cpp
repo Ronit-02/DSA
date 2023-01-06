@@ -3,15 +3,17 @@
 
 using namespace std;
 
+// Method:
+// building tree by inserting all nodes manually, for every
+// node inserting left and right child
+
 struct node{
 public:
     int data;
     node* left;
     node* right;
 
-    // constructor
     node(int data){
-        
         this->data = data;
         left = NULL;
         right = NULL;
@@ -21,22 +23,14 @@ public:
 node* buildTree(node* root){
 
     int data;
-    // cout << "Enter the data: " << endl;
     cin >> data;
 
     // null case
     if(data == -1)
         return NULL;
 
-    // root node
     root = new node(data);
-
-    // left node
-    // cout << "Enter data for inserting in left of " << data << endl;
     root -> left = buildTree(root -> left);
-
-    // right node
-    // cout << "Enter data for inserting in right of " << data << endl;
     root -> right = buildTree(root -> right);
 
     return root;
@@ -58,8 +52,8 @@ int main(){
 
     node* root = NULL;
 
+    // use this order: 1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1
     root = buildTree(root);
-    // 1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1
 
     cout << "Printing Preorder Traversal: " << endl;
     preorderTraversal(root);

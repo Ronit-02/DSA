@@ -6,6 +6,8 @@ using namespace std;
 // Intuition: 
 // we start from somewhere and if we reach a node that is previously visited
 // and path visited as well, then it's a cycle
+
+// Time Complexity: O(V+E)
 bool dfs(vector<int> &vis, vector<int> &path, vector<int> adj[], int node){
 
     vis[node] = 1;  // mark it

@@ -2,6 +2,8 @@
 #include<vector>
 using namespace std;
 
+// Bubble sort works by repeatedly swapping adjacent elements
+// Time Complexity: O(n^2)
 void bubbleSort(vector<int>& arr, int n)
 {   
     for(int i=0; i<n-1; ++i){     // (n-1) passes
@@ -18,7 +20,7 @@ void bubbleSort(vector<int>& arr, int n)
             break;
     }
 }
-    
+
 int main(){
 
     vector<int>arr = {2,5,1,4,3};
@@ -31,6 +33,3 @@ int main(){
 
     return 0;
 }
-
-
-

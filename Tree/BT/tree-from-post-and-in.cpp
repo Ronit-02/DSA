@@ -19,7 +19,7 @@ public:
     }
 };
 
-node *solve(int in[], int post[], int inStart, int inEnd, int postEnd, int n){
+node *helper(int in[], int post[], int inStart, int inEnd, int postEnd, int n){
     
     // base case
     if(inStart > inEnd || postEnd < 0)
@@ -37,17 +37,16 @@ node *solve(int in[], int post[], int inStart, int inEnd, int postEnd, int n){
     int numsRight = inEnd - inRoot;
     
     // left subtree
-    root -> left = solve(in, post, inStart, inRoot-1, postEnd-numsRight-1, n);
+    root -> left = helper(in, post, inStart, inRoot-1, postEnd-numsRight-1, n);
     // right subtree
-    root -> right = solve(in, post, inRoot+1, inEnd, postEnd-1, n);
+    root -> right = helper(in, post, inRoot+1, inEnd, postEnd-1, n);
     
     return root;
 }
 
-//Function to return a tree created from postorder and inoreder traversals.
 node *buildTree(int in[], int post[], int n) {
     
-    return solve(in, post, 0, n-1, n-1, n);
+    return helper(in, post, 0, n-1, n-1, n);
 }
 
 // Recursive Method

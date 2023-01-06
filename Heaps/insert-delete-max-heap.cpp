@@ -1,9 +1,10 @@
 #include<iostream>
-
 using namespace std;
 
-class heap{
+
+class heap {
 public:
+
     int arr[100];
     int size;
 
