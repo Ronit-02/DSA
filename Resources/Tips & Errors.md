@@ -53,7 +53,8 @@ for(auto it: arr){       // doesn't modifies the value
 7. Memory limit exceeded error or Segmentation Fault (SIGSEGV) in DFS approach -> switch to BFS
 
 
-8. how to custom sort an  ??
+8. how to custom sort an ??
+- **Important Note**: By default for pair<int,int> it will sort on the basis of first and if it is equal it will automatically sort on the basis of second
 - example 1 sorting 1d vector
 ```cpp 
 static bool comparator(int &a, int &b){
