@@ -1,4 +1,4 @@
-# DSA Tips💡
+# Tips & Errors 💡❌ 
 
 1. Buffer overflow, when you check out of bounds
 - check edge case, then compare values
@@ -42,18 +42,19 @@ s + (e - s)/2;    // correct
 e + (s - e)/2;    // wrong
 ```
 
-6. You can't modify a reference to x because it is const. It is const because iterating a std::set through loop gives only const values
+6. You can't modify a reference to x because it is const. It is const because iterating a std::set through loop gives only const values.
+To modify it you can create a reference though
 ```cpp
 int arr[] = {1,2,3,4};
-for(auto it: arr){       // doesn't modifies the value
-    it = 0;
+for(auto &it: arr){       
+    it = 0;             // // modifies the actual value now
 }
 ```
 
-7. Memory limit exceeded error or Segmentation Fault (SIGSEGV) in DFS approach -> switch to BFS
+7. If you get Memory limit exceeded error or Segmentation Fault (SIGSEGV) in DFS, DFS -> BFS (switch to BFS)
 
 
-8. how to custom sort an ??
+8. How to custom sort an Array??
 - **Important Note**: By default for pair<int,int> it will sort on the basis of first and if it is equal it will automatically sort on the basis of second
 - example 1 sorting 1d vector
 ```cpp 

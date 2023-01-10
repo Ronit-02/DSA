@@ -7,7 +7,8 @@ const int M = 1e7+9;
 const int N = 1e5+10;
 ll fact[N];
 
-// Time Complexity: O(N*T)
+// Test cases: 10^5
+// Time Complexity: O(N*T) -> 10^10 > 10^7 -> TLE
 void fact1(){
 
     int t;     
@@ -23,7 +24,7 @@ void fact1(){
     }
 }
 
-// Time Complexity: O(N+T)
+// Time Complexity: O(N+T) -> 10^5 -> Pass
 void fact2(){
 
     // Pre computing values for N

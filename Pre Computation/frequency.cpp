@@ -8,7 +8,8 @@ using namespace std;
 const int N = 1e7+10;
 int hsh[N];
 
-// Time Complexity: O(N + N*T)
+// Test cases: 10^5
+// Time Complexity: O(N*t) -> 10^12 > 10^7 -> TLE
 void freq1(){
     int n;
     cin >> n;
@@ -30,7 +31,7 @@ void freq1(){
     }
 }
 
-// Time Complexity: O(N+T)
+// Time Complexity: O(N+T) -> 10^7 -> Pass
 void freq2(){
 
     int n;
