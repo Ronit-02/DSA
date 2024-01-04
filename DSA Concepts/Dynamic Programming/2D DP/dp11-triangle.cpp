@@ -43,13 +43,40 @@ int f3(vector<vector<int>> &triangle)
         dp[n-1][i] = triangle[n-1][i];
     
     for(int i=n-2; i>=0; i--){
-        dp[]
+        
+        for(int j=0; j<=n-2; j++){
+            int down = triangle[i][j] + dp[i+1][j];
+            int downRight = triangle[i][j] + dp[i+1][j+1];
+
+            dp[i][j] = min(down, downRight);
+        }
     }
+
+    return dp[0][0];
 }
 
 // Space Optimization
-int f4()
+int f4(vector<vector<int>> &triangle)
 {
+    int n = triangle.size();
+    vector<int> prev(n, 0);
+
+    for(int i=0; i<n; i++)
+        prev[i] = triangle[n-1][i];
+    
+    for(int i=n-2; i>=0; i--){
+        vector<int> cur(n, 0);
+
+        for(int j=0; j<=n-2; j++){
+            int down = triangle[i][j] + prev[j];
+            int downRight = triangle[i][j] + prev[j+1];
+
+            cur[j] = min(down, downRight);
+        }
+        prev = cur;
+    }
+
+    return prev[0];
 }
 
 int Triangle(vector<vector<int>> &triangle)
@@ -61,8 +88,8 @@ int Triangle(vector<vector<int>> &triangle)
     // vector<vector<int>> dp(n, vector<int> (n, -1));
     // return f2(0, 0, triangle, dp);
 
-    return f3(triangle);
-    // return f4(triangle);
+    // return f3(triangle);
+    return f4(triangle);
 }
 
 int main()
