@@ -44,7 +44,7 @@ void takeInput(node* &root){
     }
 }
 
-// Iterative Approach using 1 stack
+// Iterative Approach (using stack)
 void inorder(node* root){
 
     stack<node *> s;
@@ -68,7 +68,7 @@ void inorder(node* root){
     }
 }
 
-// Iterative Approach
+// Iterative Approach (using queue)
 void levelOrderTraversal(node *root){
 
     vector <int> ans;

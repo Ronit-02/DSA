@@ -88,7 +88,7 @@ node *createMapping(node* root, unordered_map <node*, node*> &nodeParent, int t)
 
 // Recursive Approach
 void helper(node* node, int distance, int k, vector<int> &ans, 
-            unordered_map <node *, node *> nodeParent, unordered_map <node*, int> &visited){
+    unordered_map<node*, node*> nodeParent, unordered_map <node*, int> &visited){
     
     // base case
     if(node == NULL){

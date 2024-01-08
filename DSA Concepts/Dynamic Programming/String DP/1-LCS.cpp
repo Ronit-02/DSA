@@ -3,7 +3,7 @@
 #include <algorithm>
 using namespace std;
 
-// Question:
+// Question: Find out ways to attain target sum
 
 // Recursion (req value to base case)
 int f1(vector<int> &nums)
@@ -25,7 +25,7 @@ int f4()
 {
 }
 
-int maxNonAdjSum(vector<int> &nums)
+int LCS(vector<int> &nums)
 {
     return f1(nums);
 }
@@ -33,7 +33,7 @@ int maxNonAdjSum(vector<int> &nums)
 int main()
 {
     vector<int> nums = {1, 2, 4};
-    cout << maxNonAdjSum(nums);
+    cout << LCS(nums);
 
     return 0;
 }
