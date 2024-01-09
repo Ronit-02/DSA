@@ -4,7 +4,7 @@
 using namespace std;
 
 // Question: Thief wants to maximize the value of items he steals,
-// but he can carry a fixed weight of items
+// but he can carry a fixed weight of items (unlimited supply)
 
 // Recursion (req value to base case)
 int f1(int i, int w, vector<int> &wt, vector<int> &val)
@@ -15,7 +15,9 @@ int f1(int i, int w, vector<int> &wt, vector<int> &val)
     }
 
     int take = INT_MIN;
-    if(w >= wt[i]) take = val[i] + f1(i-1, w-wt[i], wt, val);
+    if(wt[i] <= w) 
+        take = val[i] + f1(i, w-wt[i], wt, val);
+    
     int notTake = 0 + f1(i-1, w, wt, val);
 
     return max(take, notTake);
@@ -32,7 +34,9 @@ int f2(int i, int w, vector<int> &wt, vector<int> &val, vector<vector<int>> &dp)
         return dp[i][w];
 
     int take = INT_MIN;
-    if(w >= wt[i]) take = val[i] + f2(i-1, w-wt[i], wt, val, dp);
+    if (wt[i] <= w)
+        take = val[i] + f2(i, w-wt[i], wt, val, dp);
+    
     int notTake = 0 + f2(i-1, w, wt, val, dp);
 
     return dp[i][w] = max(take, notTake);
@@ -51,8 +55,9 @@ int f3(int maxWeight, vector<int> &wt, vector<int> &val)
         for(int w=0; w<=maxWeight; w++){
 
             int take = INT_MIN;
-            if (w >= wt[i])
-                take = val[i] + dp[i-1][w - wt[i]];
+            if (wt[i] <= w)
+                take = val[i] + dp[i][w - wt[i]];
+            
             int notTake = 0 + dp[i-1][w];
 
             dp[i][w] = max(take, notTake);
@@ -69,7 +74,7 @@ int f4()
 
 int knapsack(int &maxWeight, vector<int> &weight, vector<int> &value)
 {
-    int n = weight.size();
+    // int n = weight.size();
     // return f1(n-1, maxWeight, weight, value);
 
     // vector<vector<int>> dp(n, vector<int> (maxWeight+1, -1));
@@ -80,9 +85,9 @@ int knapsack(int &maxWeight, vector<int> &weight, vector<int> &value)
 
 int main()
 {   
-    vector<int> weight = {1, 2, 4};
-    vector<int> value = {1, 1, 2};
-    int maxWeight = 5;
+    vector<int> weight = {2, 4, 6};
+    vector<int> value = {5, 11, 13};
+    int maxWeight = 10;
     cout << knapsack(maxWeight, weight, value);
 
     return 0;
