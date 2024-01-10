@@ -1,4 +1,0 @@
-Starter Codes Keywords:
-
-1. leetcode-starter-code
-2. dsa-starter-code
