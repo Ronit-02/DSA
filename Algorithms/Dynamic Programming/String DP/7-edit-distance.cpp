@@ -3,12 +3,11 @@
 #include <algorithm>
 using namespace std;
 
-// Question: Find out ways to attain target sum
+// Question:
 
 // Recursion (req value to base case)
 int f1(vector<int> &nums)
 {
-    
 }
 
 // Memoization
@@ -26,15 +25,16 @@ int f4()
 {
 }
 
-int LCS(vector<int> &nums)
+int editDistance(string &s1, string &s2)
 {
-    return f1(nums);
+    return f1(s1, s2);
 }
 
 int main()
 {
-    vector<int> nums = {1, 2, 4};
-    cout << LCS(nums);
+    string s1 = "horse";
+    string s2 = "ros";
+    cout << editDistance(s1, s2);  // 3
 
     return 0;
 }

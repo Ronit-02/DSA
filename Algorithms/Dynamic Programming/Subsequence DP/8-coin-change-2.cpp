@@ -3,7 +3,8 @@
 #include <algorithm>
 using namespace std;
 
-// Question: 
+// Question: Tell if you can reach target amt with these coins,
+// you can pick any coin, any no of times
 
 // Recursion (req value to base case)
 int f1(int i, int amount, vector<int> &coins){
@@ -14,7 +15,8 @@ int f1(int i, int amount, vector<int> &coins){
     }
 
     int take = 0;
-    if(coins[i] <= amount) take = f1(i, amount-coins[i], coins);
+    if(coins[i] <= amount) 
+        take = f1(i, amount-coins[i], coins);
     
     int notTake = f1(i-1, amount, coins); 
 
