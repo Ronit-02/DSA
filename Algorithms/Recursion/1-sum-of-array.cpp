@@ -2,23 +2,22 @@
 
 using namespace std;
 
-int sum(int arr[], int size){
+int sum(int i, int arr[]){
 
     // Base Case
-    if(size == 1)
+    if(i == 0)
         return arr[0];
 
     // Recursive Call
-    int ans = arr[0] + sum(arr + 1, size - 1);
-    return ans;
+    return arr[i] + sum(i-1, arr);
 }
 
 int main(){
 
     int arr[5] = {1,1,2,4,6};
+    int size = sizeof(arr)/sizeof(arr[0]);
     
-    int output = sum(arr, 5);
-    cout << output << endl;
+    cout << sum(size-1, arr);
 
     return 0;
 }

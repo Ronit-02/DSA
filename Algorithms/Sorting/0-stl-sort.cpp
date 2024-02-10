@@ -8,9 +8,8 @@ using namespace std;
 // Inbuilt Sort: O(n.logn)
 bool compare(int a, int b){
 
-    return a < b;
-    // descending order: a > b
-    // ascending order: a < b
+    return a < b;  // ascending order
+    // return a > b;  // descending order
 }
 
 int main() {
@@ -19,9 +18,8 @@ int main() {
     int n = sizeof(arr)/sizeof(arr[0]);
 
     // sort(arr, arr + n);
-    // reverse(arr, arr + n);  
-    // sort(arr, arr + n, greater<int>());     // inbuild comparator
-    sort(arr, arr + n, compare);     // argument(start, end, comparator fn)
+    // sort(arr, arr + n, greater<int>());
+    sort(arr, arr + n, compare);
 
     for(int x : arr){
         cout<< x <<endl;

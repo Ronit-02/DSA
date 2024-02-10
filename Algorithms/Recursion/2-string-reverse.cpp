@@ -3,25 +3,27 @@
 
 using namespace std;
 
-void stringReverse(string &str, int i){
+void stringReverse(int i, string &str){
 
     int len = str.length();
+
     // Base Case
     if(i > len/2)
         return;
-    // Process
+    
+    // Swap
     swap(str[i], str[len-i-1]);
-    //Recursive Call
-    stringReverse(str, i+1);
 
+    //Recursive Call
+    stringReverse(i+1, str);
 }
 
 int main(){
 
     string str = "ronit";
 
-    stringReverse(str, 0);
-    cout << endl << str;
+    stringReverse(0, str);
+    cout << str;
 
     return 0;
 }

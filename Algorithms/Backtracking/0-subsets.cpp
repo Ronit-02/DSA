@@ -31,9 +31,10 @@ int main(){
 
     subsets(nums, 0, ans, curr);
 
-    for(int i=0; i<ans.size(); i++){
-        for(auto x:ans[i])
-            cout << x;
+    for(auto &it: ans){
+        for(auto &at: it){
+            cout << at;
+        }
         cout << endl;
     }
 

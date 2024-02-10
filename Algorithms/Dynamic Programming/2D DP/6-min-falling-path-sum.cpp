@@ -7,10 +7,21 @@ using namespace std;
 // given that you can only move from i -> i-1, i, i+1
 
 // Recursion (req value to base case)
-int f1()
-{
-}
+int f1(int i, int j, vector<vector<int>>& matrix){
 
+    if(i==matrix.size()-1)
+        return matrix[i][j];
+
+    int left = INT_MAX;
+    if(j > 0) left = matrix[i][j] + f1(i+1, j-1, matrix);
+
+    int down = matrix[i][j] + f1(i+1, j, matrix);
+    
+    int right = INT_MAX;
+    if(j < matrix[0].size()-1) right = matrix[i][j] + f1(i+1, j+1, matrix);
+
+    return min({left, down, right});
+}
 // Memoization
 int f2()
 {
@@ -20,32 +31,32 @@ int f2()
 int f3(vector<vector<int>> &matrix)
 {
     int n = matrix.size();
-        vector<vector<int>> dp(n, vector<int> (n, 0));
+    vector<vector<int>> dp(n, vector<int> (n, 0));
 
-        for(int i=0; i<n; i++)
-            dp[0][i] = matrix[0][i];
-        
-        for(int i=1; i<n; i++){
-            for(int j=0; j<n; j++){
+    for(int i=0; i<n; i++)
+        dp[0][i] = matrix[0][i];
+    
+    for(int i=1; i<n; i++){
+        for(int j=0; j<n; j++){
 
-                int downLeft = INT_MAX;
-                if(j>0) downLeft = matrix[i][j] + dp[i-1][j-1];
+            int downLeft = INT_MAX;
+            if(j>0) downLeft = matrix[i][j] + dp[i-1][j-1];
 
-                int down = matrix[i][j] + dp[i-1][j];
+            int down = matrix[i][j] + dp[i-1][j];
 
-                int downRight = INT_MAX;
-                if(j<n-1) downRight = matrix[i][j] + dp[i-1][j+1];
+            int downRight = INT_MAX;
+            if(j<n-1) downRight = matrix[i][j] + dp[i-1][j+1];
 
-                dp[i][j] = min(downLeft, min(down, downRight));
-            }
+            dp[i][j] = min(downLeft, min(down, downRight));
         }
+    }
 
-        int result = INT_MAX;
-        for(int i=0; i<n; i++){
-            result = min(result, dp[n-1][i]);
-        }
+    int result = INT_MAX;
+    for(int i=0; i<n; i++){
+        result = min(result, dp[n-1][i]);
+    }
 
-        return result;
+    return result;
 }
 
 // Space Optimization
